@@ -11,6 +11,7 @@ namespace UNIT
         [SerializeField] private LayerMask m_detectionLayerMask;
 
         private Vector3 m_fleeDirection = Vector3.zero;
+        private Vector3 m_lastDetectPosition = Vector3.zero;
         //==========================================================
         //==========================================================
 
@@ -18,6 +19,13 @@ namespace UNIT
         {
             this.m_fleeDirection = fleeDirection;
         }
+
+        public void SetLastDetectedPosition(Vector3 lastPos)
+        {
+            this.m_lastDetectPosition = lastPos;
+        }
+
+        public Vector3 GetLastdetectedPosition() => this.m_lastDetectPosition;
 
         public Vector3 GetFleeDirection() => this.m_fleeDirection;
 

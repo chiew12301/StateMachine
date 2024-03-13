@@ -26,7 +26,7 @@ namespace DOG
 
         public override EDOGSTATE GetNextState()
         {
-            return EDOGSTATE.PATROl;
+            return EDOGSTATE.PATROL;
         }
 
         public override void OnCollisionEnter(Collision other)
@@ -63,7 +63,7 @@ namespace DOG
         {
             if(this.m_dogScript.GetIsStaminaFull())
             {
-                this.m_mySM.ChangeState(EDOGSTATE.PATROl);
+                this.m_mySM.ChangeState(EDOGSTATE.PATROL);
                 return;
             }
 

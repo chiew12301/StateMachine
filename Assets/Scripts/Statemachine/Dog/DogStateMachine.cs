@@ -8,7 +8,7 @@ namespace DOG
     public enum EDOGSTATE
     {
         IDLE,
-        PATROl
+        PATROL
     }
 
     public class DogStateMachine : StateManager<EDOGSTATE>

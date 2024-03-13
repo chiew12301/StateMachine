@@ -18,7 +18,7 @@ namespace DOG
 
         //==============================================================
 
-        public DogPatrolState(StateManager<EDOGSTATE> sm, ADog dogscript, float speed) : base(EDOGSTATE.PATROl, sm)
+        public DogPatrolState(StateManager<EDOGSTATE> sm, ADog dogscript, float speed) : base(EDOGSTATE.PATROL, sm)
         {
             this.m_dogScript = dogscript;
             this.m_moveSpeed = speed;

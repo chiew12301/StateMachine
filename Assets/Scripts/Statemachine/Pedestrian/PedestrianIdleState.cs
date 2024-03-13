@@ -86,6 +86,7 @@ namespace PEDESTRIAN
                 if (this.m_dogColliderFound[i] == null) continue;
 
                 this.m_pedestrainSciprt.SetFleeDirection(this.m_mySM.transform.position - this.m_dogColliderFound[i].transform.position);
+                this.m_pedestrainSciprt.SetLastDetectedPosition(this.m_dogColliderFound[i].transform.position);
                 this.m_mySM.ChangeState(EPEDESTRAINSTATE.FLEE);
                 return;
             }

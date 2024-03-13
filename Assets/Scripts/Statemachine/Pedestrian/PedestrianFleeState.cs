@@ -70,9 +70,21 @@ namespace PEDESTRIAN
         {
             if(!this.CheckIsCloseToDog())
             {
-                this.m_mySM.ChangeState(EPEDESTRAINSTATE.IDLE);
-                return;
+                if(this.CheckIsFleeToPosition())
+                {
+                    this.m_mySM.ChangeState(EPEDESTRAINSTATE.IDLE);
+                    return;
+                }
             }
+            Vector3 direction = this.m_pedestrainSciprt.GetFleeDirection();
+            direction.y = 0.0f; //Ensure won't sleep
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                this.m_mySM.transform.rotation = Quaternion.Slerp(this.m_mySM.transform.rotation, targetRotation, Time.deltaTime * 5.0f);
+            }
+
             this.m_mySM.transform.position = Vector3.MoveTowards(this.m_mySM.transform.position, this.m_mySM.transform.position + this.m_pedestrainSciprt.GetFleeDirection() * this.m_pedestrainSciprt.GetFleeDistance(), Time.deltaTime * this.m_moveSpeed);
         }
 
@@ -87,10 +99,18 @@ namespace PEDESTRIAN
                 if (this.m_dogColliderFound[i] == null) continue;
 
                 this.m_pedestrainSciprt.SetFleeDirection(this.m_mySM.transform.position - this.m_dogColliderFound[i].transform.position);
+                this.m_pedestrainSciprt.SetLastDetectedPosition(this.m_dogColliderFound[i].transform.position);
                 return true;
             }
 
             return false;
+        }
+
+        private bool CheckIsFleeToPosition()
+        {
+            float distanceCompareToLastPos = Vector3.Distance(this.m_mySM.transform.position, this.m_pedestrainSciprt.GetLastdetectedPosition());
+
+            return distanceCompareToLastPos >= 5.0f;
         }
 
         //==============================================================
