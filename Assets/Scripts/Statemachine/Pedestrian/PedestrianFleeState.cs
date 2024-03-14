@@ -24,6 +24,7 @@ namespace PEDESTRIAN
         public override void EnterState()
         {
             this.m_mySM.SetDisplayText(this.StateKey.ToString());
+            this.m_pedestrainSciprt.SetMoveSpeed(this.m_moveSpeed);
         }
 
         public override void ExitState()
@@ -85,7 +86,7 @@ namespace PEDESTRIAN
                 this.m_mySM.transform.rotation = Quaternion.Slerp(this.m_mySM.transform.rotation, targetRotation, Time.deltaTime * 5.0f);
             }
 
-            this.m_mySM.transform.position = Vector3.MoveTowards(this.m_mySM.transform.position, this.m_mySM.transform.position + this.m_pedestrainSciprt.GetFleeDirection() * this.m_pedestrainSciprt.GetFleeDistance(), Time.deltaTime * this.m_moveSpeed);
+            this.m_pedestrainSciprt.SetDestination(this.m_mySM.transform.position + this.m_pedestrainSciprt.GetFleeDirection() * this.m_pedestrainSciprt.GetFleeDistance());
         }
 
         private bool CheckIsCloseToDog()

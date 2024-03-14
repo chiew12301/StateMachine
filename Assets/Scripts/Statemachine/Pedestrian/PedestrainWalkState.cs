@@ -26,6 +26,7 @@ namespace PEDESTRIAN
         {
             this.m_mySM.SetDisplayText(this.StateKey.ToString());
             this.m_curerntWaypoint = this.m_mySM.wayPoints[this.m_currentWaypointIndex];
+            this.m_pedestrainSciprt.SetMoveSpeed(this.m_moveSpeed);
         }
 
         public override void ExitState()
@@ -92,7 +93,7 @@ namespace PEDESTRIAN
                 this.m_curerntWaypoint = this.m_mySM.wayPoints[this.m_currentWaypointIndex];
             }
 
-            this.m_mySM.transform.position = Vector3.MoveTowards(this.m_mySM.transform.position, this.m_curerntWaypoint.position, Time.deltaTime * this.m_moveSpeed);
+            this.m_pedestrainSciprt.SetDestination(this.m_curerntWaypoint.position);
         }
 
         private void CheckIsCloseToDog()

@@ -26,8 +26,10 @@ namespace DOG
 
         public override void EnterState()
         {
+            this.m_dogScript.GetAgent().enabled = true;
             this.m_curerntWaypoint = this.m_mySM.wayPoints[this.m_currentWaypointIndex];
             this.m_mySM.SetDisplayText(this.StateKey.ToString());
+            this.m_dogScript.SetMoveSpeed(this.m_moveSpeed);
         }
 
         public override void ExitState()
@@ -99,7 +101,7 @@ namespace DOG
                 this.m_curerntWaypoint = this.m_mySM.wayPoints[this.m_currentWaypointIndex];
             }
 
-            this.m_mySM.transform.position = Vector3.MoveTowards(this.m_mySM.transform.position, this.m_curerntWaypoint.position, Time.deltaTime * this.m_moveSpeed);
+            this.m_dogScript.SetDestination(this.m_curerntWaypoint.position);
             this.m_dogScript.DeductStamina(this.m_staminaCost);
         }
 

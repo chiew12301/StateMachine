@@ -16,6 +16,7 @@ namespace DOG
 
         public override void EnterState()
         {
+            this.m_dogScript.GetAgent().enabled = false;
             this.m_mySM.SetDisplayText(this.StateKey.ToString());
         }
 
@@ -63,7 +64,10 @@ namespace DOG
         {
             if(this.m_dogScript.GetIsStaminaFull())
             {
-                this.m_mySM.ChangeState(EDOGSTATE.PATROL);
+                if (this.m_mySM.wayPoints.Length > 0)
+                {
+                    this.m_mySM.ChangeState(EDOGSTATE.PATROL);
+                }
                 return;
             }
 

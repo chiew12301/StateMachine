@@ -23,7 +23,6 @@ namespace PEDESTRIAN
         public override void EnterState()
         {
             this.m_mySM.SetDisplayText(this.StateKey.ToString());
-            this.CheckIsCloseToDog();
         }
 
         public override void ExitState()
@@ -68,7 +67,12 @@ namespace PEDESTRIAN
 
         public override void UpdateState()
         {
+            if(this.m_mySM.wayPoints.Length <= 0)
+            {
+                return;
+            }
 
+            this.CheckIsCloseToDog();
         }
 
         private void CheckIsCloseToDog()
