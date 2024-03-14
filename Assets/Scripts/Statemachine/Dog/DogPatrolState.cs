@@ -85,7 +85,7 @@ namespace DOG
                 return;
             }
 
-            Vector3 direction = this.m_curerntWaypoint.position - this.m_mySM.transform.position;
+            Vector3 direction = this.m_dogScript.GetAgent().steeringTarget - this.m_mySM.transform.position;//this.m_curerntWaypoint.position - this.m_mySM.transform.position;
             direction.y = 0.0f; //Ensure won't sleep
 
             if (direction != Vector3.zero)
