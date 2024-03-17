@@ -9,14 +9,14 @@ namespace PEDESTRIAN
     {
         private Transform m_curerntWaypoint = null;
         private int m_currentWaypointIndex = 0;
-        private APedestrain m_pedestrainSciprt = null;
+        private APedestrian m_pedestrainSciprt = null;
         private float m_moveSpeed = 0.0f;
 
         private int m_dogFoundCount = 0;
         private Collider[] m_dogColliderFound = new Collider[3];
         //==============================================================
 
-        public PedestrainWalkState(StateManager<EPEDESTRAINSTATE> sm, APedestrain aPedestrain, float speed) : base(EPEDESTRAINSTATE.WALK, sm)
+        public PedestrainWalkState(StateManager<EPEDESTRAINSTATE> sm, APedestrian aPedestrain, float speed) : base(EPEDESTRAINSTATE.WALK, sm)
         {
             this.m_pedestrainSciprt = aPedestrain;
             this.m_moveSpeed = speed;

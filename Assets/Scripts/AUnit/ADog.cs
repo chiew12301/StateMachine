@@ -5,10 +5,17 @@ namespace UNIT
 {
     public class ADog : AnUnit
     {
-        [SerializeField] private bool m_hasStaminaSystem = true;
-        [SerializeField] private StaminaSystem m_staminaSystem = null;
+        private bool m_hasStaminaSystem = true;
+        private StaminaSystem m_staminaSystem = null;
 
         //==========================================================
+
+        private void Start()
+        {
+            this.m_hasStaminaSystem = this.TryGetComponent<StaminaSystem>(out this.m_staminaSystem);
+        }
+
+
         //==========================================================
 
         public bool GetIsStaminaFull()

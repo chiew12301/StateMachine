@@ -14,7 +14,7 @@ namespace PEDESTRIAN
 
     public class PedestrianStateMachine : StateManager<EPEDESTRAINSTATE>
     {
-        [SerializeField] private APedestrain m_pedestrainSciprt = null;
+        [SerializeField] private APedestrian m_pedestrainSciprt = null;
 
         //==============================================================
 

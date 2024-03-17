@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UNIT
 {
-    public class APedestrain : AnUnit
+    public class APedestrian : AnUnit
     {
         [SerializeField] private float m_fleeSpeed = 4.0f;
         [SerializeField] private float m_detectionRange = 3.0f;

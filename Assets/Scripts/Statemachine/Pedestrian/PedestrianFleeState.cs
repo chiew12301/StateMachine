@@ -8,14 +8,14 @@ namespace PEDESTRIAN
 {
     public class PedestrianFleeState : BaseState<EPEDESTRAINSTATE>
     {
-        private APedestrain m_pedestrainSciprt = null;
+        private APedestrian m_pedestrainSciprt = null;
         private float m_moveSpeed = 0.0f;
 
         private int m_dogFoundCount = 0;
         private Collider[] m_dogColliderFound = new Collider[3];
         //==============================================================
 
-        public PedestrianFleeState(StateManager<EPEDESTRAINSTATE> sm, APedestrain aPedestrain, float speed) : base(EPEDESTRAINSTATE.FLEE, sm)
+        public PedestrianFleeState(StateManager<EPEDESTRAINSTATE> sm, APedestrian aPedestrain, float speed) : base(EPEDESTRAINSTATE.FLEE, sm)
         {
             this.m_pedestrainSciprt = aPedestrain;
             this.m_moveSpeed = speed;
